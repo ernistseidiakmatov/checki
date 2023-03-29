@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="com.checki.user.service.UserDao">
+    <!--전체 리스트조회-->
+    <select id="find" resultType="com.checki.user.domain.User">
+        SELECT * FROM tbl_user
+    </select>
+    
+      <select id="findByIdAndPassword" resultType="com.checki.user.domain.User">
+        SELECT * FROM tbl_user WHERE user_id=#{user_id}
+    </select>
+</mapper>

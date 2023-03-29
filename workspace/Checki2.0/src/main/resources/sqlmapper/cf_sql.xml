@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="com.checki.cf.service.CfDao">
+    <!--전체 리스트조회-->
+    <select id="find" resultType="com.checki.cf.domain.Cfacility">
+        SELECT * FROM tbl_check_group_mst
+    </select>
+</mapper>
