@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="com.checki.checkitem.service.CheckItemDao">
+    <!--전체 리스트조회-->
+
+    <select id="find"  resultType="com.checki.checkitem.domain.CheckItem">
+        SELECT * FROM tbl_check_item_mst
+    </select>
+
+    <insert id="insert" parameterType="com.checki.checkitem.domain.CheckItem">
+          INSERT INTO tbl_check_item_mst(
+            check_class_idx,
+            check_sub_class_idx, 
+            check_item, 
+            del_yn, 
+            create_by, 
+            create_dt,
+            update_by, 
+            update_dt,
+            check_item_type
+        )
+        VALUES(
+            #{check_class_idx},
+            #{check_sub_class_idx},
+            #{check_item},
+            #{del_yn},
+            #{create_by},
+            #{create_dt},
+            #{update_by},
+            #{update_dt},
+            #{check_item_type}
+        )
+    </insert>
+
+    <select id="findById" resultType="com.checki.checkitem.domain.CheckItem">
+        SELECT * FROM tbl_check_item_mst WHERE idx = #{idx}
+    </select>
+
+    <update id="update">
+        UPDATE tbl_check_item_mst
+        SET check_class_idx = #{check_class_idx},
+            check_sub_class_idx = #{check_sub_class_idx}, 
+            check_item = #{check_item}, 
+            del_yn = #{del_yn}, 
+            create_by = #{create_by}, 
+            create_dt = #{create_dt},
+            update_by = #{update_by}, 
+            update_dt = #{update_dt},
+            check_item_type = #{check_item_type}
+        WHERE idx = #{idx}
+    </update>
+
+     <delete id="deleteById">
+          DELETE FROM tbl_check_item_mst
+          WHERE idx = #{idx}
+    </delete>
+
+</mapper>
+    
+

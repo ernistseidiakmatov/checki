@@ -9,4 +9,56 @@
     <select id="find" resultType="com.checki.cf.domain.Cfacility">
         SELECT * FROM tbl_check_group_mst
     </select>
+
+    <insert id="insert" parameterType="com.checki.cf.domain.Cfacility">
+          INSERT INTO tbl_check_group_mst(
+            check_group,
+            del_yn,
+            create_by,
+            create_dt,
+            update_by,
+            update_dt,
+            file_name,
+            file_host,
+            file_path,
+            file_size
+        )
+        VALUES(
+            #{check_group},
+            #{del_yn},
+            #{create_by},
+            #{create_dt},
+            #{update_by},
+            #{update_dt},
+            #{file_name},
+            #{file_host},
+            #{file_path},
+            #{file_size}
+        )
+    </insert>
+
+    <delete id="deleteById">
+          DELETE FROM tbl_check_group_mst
+          WHERE idx = #{idx}
+    </delete>
+
+    <select id="findById" resultType="com.checki.cf.domain.Cfacility">
+        SELECT * FROM tbl_check_group_mst WHERE idx = #{idx}
+    </select>
+
+    <update id="update">
+        UPDATE tbl_check_group_mst
+        SET check_group = #{check_group},
+            del_yn = #{del_yn},
+            create_by = #{create_by},
+            create_dt = #{create_dt},
+            update_by = #{update_by},
+            update_dt = #{update_dt},
+            file_name = #{file_name},
+            file_host = #{file_host},
+            file_path = #{file_path},
+            file_size = #{file_size}
+        WHERE idx = #{idx}
+    </update>
+
 </mapper>

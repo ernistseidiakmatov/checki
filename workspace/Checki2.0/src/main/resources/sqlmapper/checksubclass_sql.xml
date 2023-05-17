@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="com.checki.checksubclass.service.CheckSubClassDao">
+    <!--전체 리스트조회-->
+    <select id="find" resultType="com.checki.checksubclass.domain.CheckSubClass">
+        SELECT * FROM tbl_check_sub_class_mst
+    </select>
+
+    <select id="findById" resultType="com.checki.checksubclass.domain.CheckSubClass">
+        SELECT * FROM tbl_check_sub_class_mst WHERE idx = #{idx}
+    </select>
+
+    <insert id="insert" parameterType="com.checki.checksubclass.domain.CheckSubClass">
+          INSERT INTO tbl_check_sub_class_mst( 
+            check_sub_class,
+            del_yn,
+            create_by,  
+            create_dt,  
+            update_by, 
+            update_dt
+        )
+        VALUES(
+            #{check_sub_class},
+            #{del_yn},
+            #{create_by},
+            #{create_dt},
+            #{update_by},
+            #{update_dt}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE tbl_check_sub_class_mst
+        SET check_sub_class = #{check_sub_class},
+            del_yn = #{del_yn}, 
+            create_by = #{create_by}, 
+            create_dt = #{create_dt}, 
+            update_by = #{update_by}, 
+            update_dt = #{update_dt}
+            
+        WHERE idx = #{idx}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tbl_check_sub_class_mst
+        WHERE idx = #{idx}
+    </delete>
+
+</mapper>
