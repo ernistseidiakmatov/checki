@@ -33,4 +33,6 @@ public class CheckItem {
     
     private String check_item_type;
 
+    private String check_content;
+
 }

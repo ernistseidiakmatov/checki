@@ -21,7 +21,8 @@
             create_dt,
             update_by, 
             update_dt,
-            check_item_type
+            check_item_type,
+            check_content
         )
         VALUES(
             #{check_class_idx},
@@ -32,7 +33,8 @@
             #{create_dt},
             #{update_by},
             #{update_dt},
-            #{check_item_type}
+            #{check_item_type},
+            #{check_content}
         )
     </insert>
 
@@ -50,7 +52,8 @@
             create_dt = #{create_dt},
             update_by = #{update_by}, 
             update_dt = #{update_dt},
-            check_item_type = #{check_item_type}
+            check_item_type = #{check_item_type},
+            check_content = #{check_content}
         WHERE idx = #{idx}
     </update>
 

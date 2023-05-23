@@ -40,26 +40,35 @@ public class CheckItemService {
 
         	for(int i=0;i<result.size();i++) {
         		String dt=result.get(i).getUpdate_dt();
-                long unixTimestamp = Long.parseLong(dt);
+                if(dt instanceof String){
+                    long unixTimestamp = Long.parseLong(dt);
 
-                Date  date = new Date(unixTimestamp);
-                String formatedDate = formatter.format(date);
-        		result.get(i).setUpdate_dt(formatedDate.toString());
-
+                    Date  date = new Date(unixTimestamp);
+                    String formatedDate = formatter.format(date);
+                    result.get(i).setUpdate_dt(formatedDate.toString());
+                }
+                
                 String c_dt=result.get(i).getCreate_dt();
-                long unixTimestamp2 = Long.parseLong(c_dt);
+                if(c_dt instanceof String){
+                    long unixTimestamp2 = Long.parseLong(c_dt);
  
-                Date  date2 = new Date(unixTimestamp2);
-                String formatedDate2 = formatter.format(date2);
-        		result.get(i).setCreate_dt(formatedDate2.toString());
+                    Date  date2 = new Date(unixTimestamp2);
+                    String formatedDate2 = formatter.format(date2);
+                    result.get(i).setCreate_dt(formatedDate2.toString());
+                }
+                
 
-                int classId = Integer.parseInt(result.get(i).getCheck_class_idx());
-                CheckClass checkClass = checkClassService.findById(classId);
-                result.get(i).setCheckClass(checkClass);
+                if(result.get(i).getCheck_class_idx() !=null){
+                    int classId = Integer.parseInt(result.get(i).getCheck_class_idx());
+                    CheckClass checkClass = checkClassService.findById(classId);
+                    result.get(i).setCheckClass(checkClass);
+                }
 
-                int subClassId = Integer.parseInt(result.get(i).getCheck_sub_class_idx());
-                CheckSubClass checkSubClass = checkSubClassService.findById(subClassId);
-                result.get(i).setCheckSubClass(checkSubClass);                  
+                if(result.get(i).getCheck_sub_class_idx() !=null){
+                    int subClassId = Integer.parseInt(result.get(i).getCheck_sub_class_idx());
+                    CheckSubClass checkSubClass = checkSubClassService.findById(subClassId);
+                    result.get(i).setCheckSubClass(checkSubClass);    
+                }
         	 }
         }
         catch(Exception e)
@@ -72,13 +81,17 @@ public class CheckItemService {
 
     public void insert(CheckItem checkItem) {
         try{
-            int classIdx = Integer.parseInt(checkItem.getCheck_class_idx());
-            CheckClass checkClass = checkClassService.findById(classIdx);
-            checkItem.setCheckClass(checkClass);
-
-            int subClassIdx = Integer.parseInt(checkItem.getCheck_sub_class_idx());
-            CheckSubClass checkSubClass = checkSubClassService.findById(subClassIdx);
-            checkItem.setCheckSubClass(checkSubClass);
+            if(checkItem.getCheck_class_idx() !=null){
+                int classIdx = Integer.parseInt(checkItem.getCheck_class_idx());
+                CheckClass checkClass = checkClassService.findById(classIdx);
+                checkItem.setCheckClass(checkClass);
+            }   
+            
+            if(checkItem.getCheck_sub_class_idx() !=null){
+                int subClassIdx = Integer.parseInt(checkItem.getCheck_sub_class_idx());
+                CheckSubClass checkSubClass = checkSubClassService.findById(subClassIdx);
+                checkItem.setCheckSubClass(checkSubClass);
+            }
 
             checkItemDao.insert(checkItem);
         } catch(Exception e){
@@ -94,26 +107,35 @@ public class CheckItemService {
         	SimpleDateFormat formatter=new SimpleDateFormat(pattern);
 
             String dt=result.getUpdate_dt();
-            long unixTimestamp = Long.parseLong(dt);
+            if(dt instanceof String){
+                long unixTimestamp = Long.parseLong(dt);
 
-            Date  date = new Date(unixTimestamp);
-            String formatedDate = formatter.format(date);
-            result.setUpdate_dt(formatedDate.toString());
+                Date  date = new Date(unixTimestamp);
+                String formatedDate = formatter.format(date);
+                result.setUpdate_dt(formatedDate.toString());
+            }
 
             String c_dt=result.getCreate_dt();
-            long unixTimestamp2 = Long.parseLong(c_dt);
+            if(c_dt instanceof String){
+                long unixTimestamp2 = Long.parseLong(c_dt);
+    
+                Date  date2 = new Date(unixTimestamp2);
+                String formatedDate2 = formatter.format(date2);
+                result.setCreate_dt(formatedDate2.toString());
+            }
 
-            Date  date2 = new Date(unixTimestamp2);
-            String formatedDate2 = formatter.format(date2);
-            result.setCreate_dt(formatedDate2.toString());
-
-            int classId = Integer.parseInt(result.getCheck_class_idx());
-            CheckClass checkClass = checkClassService.findById(classId);
-            result.setCheckClass(checkClass);
-
-            int subClassId = Integer.parseInt(result.getCheck_sub_class_idx());
-            CheckSubClass checkSubClass = checkSubClassService.findById(subClassId);
-            result.setCheckSubClass(checkSubClass);
+            
+            if(result.getCheck_class_idx() !=null){
+                int classId = Integer.parseInt(result.getCheck_class_idx());
+                CheckClass checkClass = checkClassService.findById(classId);
+                result.setCheckClass(checkClass);
+            }
+            
+            if(result.getCheck_sub_class_idx() !=null){
+                int subClassId = Integer.parseInt(result.getCheck_sub_class_idx());
+                CheckSubClass checkSubClass = checkSubClassService.findById(subClassId);
+                result.setCheckSubClass(checkSubClass);
+            }
 
         }catch(Exception e){
             e.printStackTrace();
@@ -124,13 +146,17 @@ public class CheckItemService {
 
     public void update(CheckItem checkItem) {
         try {
-            int classIdx = Integer.parseInt(checkItem.getCheck_class_idx());
-            CheckClass checkClass = checkClassService.findById(classIdx);
-            checkItem.setCheckClass(checkClass);
+            if(checkItem.getCheck_class_idx() !=null){
+                int classIdx = Integer.parseInt(checkItem.getCheck_class_idx());
+                CheckClass checkClass = checkClassService.findById(classIdx);
+                checkItem.setCheckClass(checkClass);
+            }
 
-            int subClassIdx = Integer.parseInt(checkItem.getCheck_sub_class_idx());
-            CheckSubClass checkSubClass = checkSubClassService.findById(subClassIdx);
-            checkItem.setCheckSubClass(checkSubClass);
+            if(checkItem.getCheck_sub_class_idx() !=null){
+                int subClassIdx = Integer.parseInt(checkItem.getCheck_sub_class_idx());
+                CheckSubClass checkSubClass = checkSubClassService.findById(subClassIdx);
+                checkItem.setCheckSubClass(checkSubClass);
+            }
             
             checkItemDao.update(checkItem);
         } catch (Exception e) {
