@@ -21,7 +21,9 @@
             file_name,
             file_host,
             file_path,
-            file_size
+            file_size, 
+            check_item_idx,
+            tag_id
         )
         VALUES(
             #{check_group},
@@ -33,7 +35,9 @@
             #{file_name},
             #{file_host},
             #{file_path},
-            #{file_size}
+            #{file_size},
+            #{check_item_idx},
+            #{tag_id}
         )
     </insert>
 
@@ -57,7 +61,9 @@
             file_name = #{file_name},
             file_host = #{file_host},
             file_path = #{file_path},
-            file_size = #{file_size}
+            file_size = #{file_size},
+            check_item_idx = #{check_item_idx},
+            tag_id = #{tag_id}
         WHERE idx = #{idx}
     </update>
 

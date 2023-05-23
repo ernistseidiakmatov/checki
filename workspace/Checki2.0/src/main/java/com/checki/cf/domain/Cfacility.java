@@ -1,5 +1,9 @@
 package com.checki.cf.domain;
 
+import org.springframework.objenesis.strategy.StdInstantiatorStrategy;
+
+import com.checki.checkitem.domain.CheckItem;
+
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -32,6 +36,12 @@ public class Cfacility {
     private String file_path;
 
     private String file_size;
+
+    private String check_item_idx;
+
+    private CheckItem checkItem;
+
+    private String tag_id;
 
    
 }
