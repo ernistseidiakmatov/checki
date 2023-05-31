@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- mapper DTD 선언 -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- SQL Mapping -->
+<mapper namespace="com.checki.inspector.service.InspectorDao">
+    <!--전체 리스트조회-->
+    <select id="find" resultType="com.checki.inspector.domain.Inspector">
+        SELECT * FROM tbl_inspectors
+    </select>
+
+    <select id="findById" resultType="com.checki.inspector.domain.Inspector">
+        SELECT * FROM tbl_inspectors WHERE idx = #{idx}
+    </select>
+
+    <insert id="insert" parameterType="com.checki.inspector.domain.Inspector">
+          INSERT INTO tbl_inspectors( 
+            inspector_name,
+            inspector_tel,
+            inspector_email,
+            inspector_description,
+            inspector_image,
+            del_yn,
+            create_by,  
+            create_dt,  
+            update_by, 
+            update_dt
+        )
+        VALUES(
+            #{inspector_name},
+            #{inspector_tel},
+            #{inspector_email},
+            #{inspector_description},
+            #{inspector_image},
+            #{del_yn},
+            #{create_by},
+            #{create_dt},
+            #{update_by},
+            #{update_dt}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE tbl_inspectors
+        SET inspector_name = #{inspector_name},
+            inspector_tel = #{inspector_tel},
+            inspector_email = #{inspector_email},
+            inspector_description = #{inspector_description},
+            inspector_image = #{inspector_image},
+            del_yn = #{del_yn}, 
+            create_by = #{create_by}, 
+            create_dt = #{create_dt}, 
+            update_by = #{update_by}, 
+            update_dt = #{update_dt}
+            
+        WHERE idx = #{idx}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM tbl_inspectors
+        WHERE idx = #{idx}
+    </delete>
+
+</mapper>
